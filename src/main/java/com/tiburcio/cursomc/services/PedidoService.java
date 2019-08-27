@@ -16,11 +16,11 @@ public class PedidoService {
 	@Autowired
 	private PedidoRepository repo;
 
-	public List<Pedido> buscaTodos() {
+	public List<Pedido> findAll() {
 		return repo.findAll();
 	}
 
-	public Pedido buscar(Integer id) throws ObjectNotFoundException {
+	public Pedido find(Integer id) {
 		Optional<Pedido> Pedido = repo.findById(id);
 		return Pedido.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class.getName()));

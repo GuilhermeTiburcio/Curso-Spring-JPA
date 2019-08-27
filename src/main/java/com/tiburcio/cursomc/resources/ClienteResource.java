@@ -19,13 +19,13 @@ public class ClienteResource {
 	private ClienteService service;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> listarTodos() {
-		return ResponseEntity.ok().body(service.buscaTodos());	
+	public ResponseEntity<?> findAll() {
+		return ResponseEntity.ok().body(service.findAll());	
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> listar(@PathVariable Integer id) throws ObjectNotFoundException {
-		Cliente obj = service.buscar(id);
+	public ResponseEntity<Cliente> find(@PathVariable Integer id) throws ObjectNotFoundException {
+		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);	
 	}
 	

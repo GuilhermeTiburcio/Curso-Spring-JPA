@@ -19,13 +19,13 @@ public class PedidoResource {
 	private PedidoService service;
 
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<?> listarTodos() {
-		return ResponseEntity.ok().body(service.buscaTodos());	
+	public ResponseEntity<?> findAll() {
+		return ResponseEntity.ok().body(service.findAll());	
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<?> listar(@PathVariable Integer id) throws ObjectNotFoundException {
-		Pedido obj = service.buscar(id);
+	public ResponseEntity<Pedido> find(@PathVariable Integer id) throws ObjectNotFoundException {
+		Pedido obj = service.find(id);
 		return ResponseEntity.ok().body(obj);	
 	}
 	
