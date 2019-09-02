@@ -81,6 +81,16 @@ public class Cliente implements Serializable{
 		this.senha = senha;
 		addPerfil(Perfil.CLIENTE);
 	}
+	
+	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.cpfOuCnpj = cpfOuCnpj;
+		this.tipo = (tipo == null) ? null : tipo.getCod();
+		addPerfil(Perfil.CLIENTE);
+	}
 
 	@Override
 	public boolean equals(Object obj) {
