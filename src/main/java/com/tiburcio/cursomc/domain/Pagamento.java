@@ -30,6 +30,33 @@ public class Pagamento implements Serializable {
 	private Pedido pedido;
 	
 	
+	public Pagamento() {}
+
+	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
+		super();
+		this.id = id;
+		this.estado = (estado == null) ? null : estado.getCod();
+		this.pedido = pedido;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pagamento other = (Pagamento) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -52,35 +79,6 @@ public class Pagamento implements Serializable {
 
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
-	}
-	
-	
-	
-	
-	public Pagamento() {}
-
-	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
-		super();
-		this.id = id;
-		this.estado = estado.getCod();
-		this.pedido = pedido;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pagamento other = (Pagamento) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 	@Override
